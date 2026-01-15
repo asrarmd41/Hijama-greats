@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* ================= BOOKING FORM ================= */
+ /* ================= BOOKING FORM ================= */
 const form = document.getElementById('bookingForm');
 const success = document.getElementById('bookingSuccess');
 
@@ -101,14 +101,17 @@ if (form && success) {
       return;
     }
 
-    fetch('http://localhost:5000/api/book-appointment', {
+    fetch('https://hijama-backend.onrender.com/api/book-appointment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name, phone, date })
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error('Request failed');
+      return res.json();
+    })
     .then(data => {
       success.innerHTML = `
         ✅ <strong>${data.message}</strong><br>
@@ -119,11 +122,13 @@ if (form && success) {
       success.style.display = 'block';
       form.reset();
     })
-    .catch(() => {
+    .catch(err => {
+      console.error(err);
       alert('Server error. Please try again.');
     });
   });
 }
+
 
 /* ================= DOCTOR MODAL LOGIC ================= */
 

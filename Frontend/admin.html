@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel – Hijama</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div class="login-screen" id="loginScreen">
+  <h2>Admin Login</h2>
+
+  <!-- 🔥 ADDED USERNAME FIELD -->
+  <input 
+    type="text" 
+    id="adminUsername" 
+    placeholder="Admin username" 
+    autocomplete="username"
+  />
+
+  <input 
+    type="password" 
+    id="adminPassword" 
+    placeholder="Admin password" 
+    autocomplete="current-password"
+  />
+
+  <button id="loginBtn">Login</button>
+  <p class="error" id="loginError"></p>
+</div>
+
+<!-- ================= ADMIN PANEL ================= -->
+<div class="admin-panel hidden" id="adminPanel">
+  <h1>📋 Appointment Bookings</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Booked At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookingTable"></tbody>
+  </table>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

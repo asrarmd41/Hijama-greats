@@ -1,0 +1,518 @@
+:root{
+  --bg-start:#071029;
+  --bg-mid:#0b1630;
+  --bg-end:#041021;
+  --card-bg:rgba(255,255,255,0.03);
+  --muted:#9aa4b2;
+  --accent-1:#60a5fa;
+  --accent-2:#38bdf8;
+  --text:#e6eef8;
+  --muted-dark:rgba(230,238,248,0.75);
+  --radius:12px;
+  --max-width:1100px;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(800px 400px at 10% 5%, rgba(56,189,248,0.06), transparent 10%),
+    linear-gradient(180deg,var(--bg-start),var(--bg-mid),var(--bg-end));
+  color:var(--text);
+  line-height:1.45;
+}
+
+/* ================= HEADER ================= */
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:transparent;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.site-header.scrolled{
+  background:rgba(7,16,41,0.65);
+  backdrop-filter:blur(14px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-weight:700;
+  color:var(--accent-2);
+  text-decoration:none;
+  font-size:1.1rem;
+}
+
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:18px;
+  padding:10px 6px;
+  border-radius:8px;
+  transition:color .2s ease,background .2s ease;
+}
+
+.nav a:hover{
+  background:rgba(255,255,255,0.04);
+  color:var(--muted-dark);
+}
+
+/* ================= LAYOUT ================= */
+
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:28px;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  color:#022;
+}
+
+.btn.ghost{
+  background:transparent;
+  color:var(--accent-2);
+}
+
+.btn.small{
+  padding:6px 10px;
+  font-size:.9rem;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  padding:64px 0;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:32px;
+  align-items:center;
+}
+
+.hero-copy h1{
+  font-size:2.4rem;
+  margin:0 0 12px;
+}
+
+.lead{
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.hero-art img{
+  width:100%;
+  border-radius:14px;
+}
+
+/* ================= FEATURES ================= */
+
+.features{padding:48px 0}
+
+.section-title{
+  font-size:1.4rem;
+  margin:0;
+}
+
+.section-sub{
+  color:var(--muted);
+  margin:8px 0 24px;
+}
+
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:var(--card-bg);
+  padding:20px;
+  border-radius:var(--radius);
+  transition:transform .2s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card-icon{
+  font-size:1.6rem;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{padding:36px 0}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.gallery-item img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.8);
+  opacity:0;
+  pointer-events:none;
+}
+
+.lightbox[aria-hidden="false"]{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox-img{
+  max-width:90%;
+  max-height:80vh;
+  border-radius:10px;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:20px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer{
+  padding:28px 0;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:560px){
+  .cards-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+}
+/* ===== BOOKING FORM ENHANCEMENT ===== */
+
+.appointment-form input[type="text"],
+.appointment-form input[type="tel"],
+.appointment-form input[type="date"]{
+  background: rgba(2,6,23,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+}
+
+.appointment-form input:focus{
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 2px rgba(56,189,248,0.25);
+}
+/* ================= MOBILE MENU ================= */
+
+.menu-btn{
+  display:none;
+  font-size:22px;
+  background:none;
+  border:none;
+  color:var(--text);
+  cursor:pointer;
+}
+
+/* Mobile menu panel */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:rgba(7,16,41,0.85);
+  backdrop-filter:blur(16px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.3s ease;
+  z-index:999;
+}
+
+.mobile-menu a{
+  color:var(--text);
+  font-size:1.4rem;
+  text-decoration:none;
+}
+
+.mobile-menu .close-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:24px;
+  background:none;
+  border:none;
+  color:var(--text);
+  cursor:pointer;
+}
+
+/* OPEN STATE */
+.mobile-menu.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* RESPONSIVE RULES */
+@media (max-width: 768px){
+  .nav{
+    display:none;
+  }
+  .menu-btn{
+    display:block;
+  }
+}
+/* ================= BOOK APPOINTMENT LAYOUT ================= */
+
+.appointment-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px; /* GAP between form & clinic location */
+}
+
+/* Form container */
+.appointment-form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* space between each line */
+}
+
+/* Each input full width, line by line */
+.appointment-form label{
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.appointment-form input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(2,6,23,0.45);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* Focus effect */
+.appointment-form input:focus{
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 2px rgba(56,189,248,0.25);
+}
+
+/* Buttons spacing */
+.appointment-form .btn{
+  margin-top: 8px;
+}
+
+/* Clinic location card spacing */
+.appointment-info{
+  padding-left: 12px;
+}
+
+/* Mobile fix */
+@media (max-width: 900px){
+  .appointment-grid{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+/* Calendar icon visibility */
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter: invert(1);
+  cursor: pointer;
+}
+/* ================= DOCTOR CARD ALIGNMENT FIX ================= */
+
+/* Ensure grid items stretch equally */
+.cards-grid{
+  align-items: stretch;
+}
+
+/* Make card a flex column so content aligns properly */
+.card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Normalize doctor image height */
+.card img{
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Push Call link/button to bottom */
+.card a{
+  margin-top: auto;
+}
+/* ================= DOCTOR IMAGE RATIO FIX ================= */
+
+/* Force same image ratio for all doctor cards */
+.card img{
+  width: 100%;
+  height: 200px;          /* FORCE SAME HEIGHT */
+  object-fit: cover;      /* CROP, DON’T STRETCH */
+  border-radius: 10px;
+}
+
+/* Ensure card content spacing is consistent */
+.card{
+  justify-content: flex-start;
+}
+/* ================= SECTION SPACING FIX ================= */
+
+/* Reduce gap after features (Trusted reviews row) */
+.features{
+  padding-bottom: 16px;
+}
+
+/* Pull practitioners section upward */
+#doctors{
+  margin-top: -32px;
+}
+
+/* Optional: tighter spacing for section title */
+#doctors .section-title{
+  margin-top: 0;
+}
+.trust li{
+  list-style:none;
+  margin-right:18px;
+}
+.trust{
+  display:flex;
+  gap:18px;
+  margin-top:16px;
+  padding:0;
+}
+/* ================= DOCTOR MODAL ================= */
+
+.doctor-modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.doctor-modal.open{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal container */
+.doctor-modal-content{
+  background: #071029;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 90%;
+  text-align: left;
+  position: relative;
+
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ✅ IMAGE FIX — NO CUTTING */
+.doctor-modal-content img{
+  width: 100%;
+  height: auto;               /* 🔥 allow natural height */
+  max-height: 300px;          /* limit image size */
+  object-fit: contain;        /* 🔥 NO CROPPING */
+  object-position: center;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: #fff;           /* clean background for portrait images */
+}
+
+/* Close button */
+.modal-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Doctor details list */
+#doctorModalDetails{
+  padding-left: 18px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* Optional scrollbar styling */
+.doctor-modal-content::-webkit-scrollbar{
+  width: 6px;
+}
+
+.doctor-modal-content::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
